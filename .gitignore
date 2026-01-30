@@ -1,0 +1,13 @@
+/server/
+/run/
+/target/
+/build/
+/.idea/
+/*.iml
+logs/
+world/
+world_nether/
+world_the_end/
+plugins/
+resources/config.yml
+/config.yml

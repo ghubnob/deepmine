@@ -1,0 +1,5 @@
+name: DeepMine
+version: '${version}'
+main: com.vivim.deepmine.DeepMine
+enable-player-collisions: false
+keep-spawn-loaded: false
