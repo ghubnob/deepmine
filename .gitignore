@@ -11,3 +11,4 @@ world_the_end/
 plugins/
 src/main/resources/config.yml
 /config.yml
+/.gradle
