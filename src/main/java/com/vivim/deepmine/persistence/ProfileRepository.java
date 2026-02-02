@@ -12,5 +12,5 @@ public interface ProfileRepository {
     void save(PlayerProfile profile);
     void init();
     void close();
-    boolean playerJoined(UUID uuid);
+    boolean exists(UUID uuid);
 }

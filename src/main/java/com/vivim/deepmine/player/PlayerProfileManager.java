@@ -12,9 +12,13 @@ import java.util.stream.Collectors;
 public class PlayerProfileManager {
     private final ConcurrentMap<UUID, PlayerProfile> profiles = new ConcurrentHashMap<>();
     private final PlayerProfileService service;
+    private final StorageExecutor executor;
+    private final ProfileRepository repository;
     private final JavaPlugin plugin;
 
     public PlayerProfileManager(ProfileRepository profRep, StorageExecutor executor, JavaPlugin plugin) {
+        this.executor = executor;
+        this.repository = profRep;
         this.plugin = plugin;
 
         service = new PlayerProfileService(executor, profRep, plugin, profiles);
@@ -43,6 +47,11 @@ public class PlayerProfileManager {
 
     public CompletableFuture<Void> unloadAsync(UUID uuid) {
         return service.unloadAsync(uuid);
+    }
+
+    public CompletableFuture<Boolean> hasProfile(UUID uuid) {
+        if (profiles.get(uuid) != null) return CompletableFuture.completedFuture(true);
+        return executor.supplyAsync(() -> repository.exists(uuid));
     }
 
     public void shutdown(long timeout, TimeUnit unit) {

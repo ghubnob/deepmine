@@ -108,7 +108,7 @@ public class MySqlRepository implements ProfileRepository {
     }
 
     @Override
-    public boolean playerJoined(UUID uuid) {
+    public boolean exists(UUID uuid) {
         try (Connection conn = dataSource.getConnection();
             PreparedStatement stmt = conn.prepareStatement("SELECT uuid FROM players WHERE uuid = ? LIMIT 1")) {
 

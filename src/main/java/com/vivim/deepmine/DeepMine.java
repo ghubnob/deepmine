@@ -35,7 +35,7 @@ public final class DeepMine extends JavaPlugin {
         ItemManager itemManager = new ItemManager(blockManager);
 
         Bukkit.getPluginManager().registerEvents(new PlayerJoin(minesMng, itemManager, repository,
-                blockManager,this),this);
+                blockManager,profileManager,this),this);
         Bukkit.getPluginManager().registerEvents(new PlayerQuit(minesMng, profileManager),this);
         Bukkit.getPluginManager().registerEvents(new PlayerBreakBlock(minesMng, profileManager,
                 itemManager, layerManager, blockManager,this ),this);
@@ -57,7 +57,7 @@ public final class DeepMine extends JavaPlugin {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if ((sender instanceof Player)) return true;
+        if (!(sender instanceof Player)) return true;
         if (label.equalsIgnoreCase("")) return true;
         return false;
     }

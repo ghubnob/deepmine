@@ -36,7 +36,7 @@ public class MongoRepository implements ProfileRepository {
     }
 
     @Override
-    public boolean playerJoined(UUID uuid) {
+    public boolean exists(UUID uuid) {
         return players.find(eq("_id", uuid.toString())).first() != null;
     }
 
