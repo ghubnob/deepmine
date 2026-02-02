@@ -45,7 +45,7 @@ public class PlayerJoin implements Listener {
         generator.generateLayer(p, mine);
 
         p.teleport(new Location(p.getWorld(), mine.getId(),61,0));
-        if (!repository.isPlayerJoined(uuid)) itemMng.giveTutorialItems(p);
+        if (!repository.playerJoined(uuid)) { itemMng.giveTutorialItems(p); p.sendMessage("first!"); }
         else p.sendMessage("hello again");
 
         String rpUrl = plugin.getConfig().getString("resource-pack.url");

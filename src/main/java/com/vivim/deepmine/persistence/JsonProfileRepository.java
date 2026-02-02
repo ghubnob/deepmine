@@ -48,7 +48,7 @@ public class JsonProfileRepository implements ProfileRepository {
 
     @Deprecated
     @Override
-    public boolean isPlayerJoined(UUID uuid) {
+    public boolean playerJoined(UUID uuid) {
         return false;
     }
 }

@@ -76,14 +76,14 @@ public class PlayerProfileService {
         }
 
         return executor.supplyAsync(() -> {
-            try {
+            synchronized (profiles) {
+                PlayerProfile cached = profiles.get(uuid);
+                if (cached != null) return cached;
+
                 Optional<PlayerProfile> opt = repository.load(uuid);
                 PlayerProfile profile = opt.orElseGet(() -> new PlayerProfile(uuid, 0, 0, 0));
                 profiles.put(uuid, profile);
                 return profile;
-            } catch (Exception e) {
-                plugin.getLogger().log(Level.SEVERE, "Ошибка загрузки профиля " + uuid, e);
-                return new PlayerProfile(uuid, 0, 0, 0);
             }
         });
     }

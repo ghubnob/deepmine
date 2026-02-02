@@ -18,6 +18,7 @@ public class MySqlRepository implements ProfileRepository {
         this.plugin = pl;
     }
 
+    @Override
     public void init() {
         this.dataSource = hikariConfigGetSource();
         String sql = "CREATE TABLE IF NOT EXISTS players (" +
@@ -107,9 +108,9 @@ public class MySqlRepository implements ProfileRepository {
     }
 
     @Override
-    public boolean isPlayerJoined(UUID uuid) {
+    public boolean playerJoined(UUID uuid) {
         try (Connection conn = dataSource.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("SELECT uuid FROM players WHERE uuid = ? LIMIT 1")) {
+            PreparedStatement stmt = conn.prepareStatement("SELECT uuid FROM players WHERE uuid = ? LIMIT 1")) {
 
             stmt.setString(1, uuid.toString());
 

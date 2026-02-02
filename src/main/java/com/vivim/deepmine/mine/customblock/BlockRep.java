@@ -40,7 +40,7 @@ public class BlockRep {
         if (type == ItemType.PICKAXE) {
             String name = blockBase.name() + data + " fossil";
             List<String> lore = Collections.singletonList(blockBase.name() + data + " lore!");
-            ItemStack is = new ItemStack(blockBase);
+            ItemStack is = new ItemStack(blockBase,1,data);
             ItemMeta meta = is.getItemMeta();
             meta.setDisplayName(name);
             meta.setLore(lore);

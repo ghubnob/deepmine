@@ -9,5 +9,5 @@ world/
 world_nether/
 world_the_end/
 plugins/
-resources/config.yml
+src/main/resources/config.yml
 /config.yml
